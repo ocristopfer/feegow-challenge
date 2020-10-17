@@ -8,7 +8,7 @@ $token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJw
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento de Consultas</title>
-    <link rel="icon" type="image/ico" href="./../../../assets/favicon.png" />
+    <link rel="icon" type="image/ico" href="./../../assets/favicon.png" />
     <link rel="stylesheet" type="text/css" href="./../../plugins/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./../../plugins/bootstrap/bootstrap-datepicker3.min.css" />
     <link rel="stylesheet" type="text/css" href="view.css" />
