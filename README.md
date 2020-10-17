@@ -9,7 +9,7 @@
 ### Executar Usando Servidor web embutido do PHP
  
 - 1: Instalar a dependência Visual C++ Redistributable for Visual Studio 2015-2019 x86 ", está no diretório do projeto: depedencias\VC_redist.x86.exe"
-- 2: Instalar o Google Chrome: https://www.google.pt/intl/pt-PT/chrome/
+- 2: Instalar o Google Chrome: https://www.google.pt/intl/pt-PT/chrome/ ou Microsoft Edge Atualizado na versão Chromium: https://www.microsoft.com/pt-br/edge (se for utilizar o edge dever ser alterado o arquivo executarServidor, removendo o comentario da linha responsavel por executar no edge e comentar a linha do chrome)
 - 3: Instalar o MySQL Server  (https://dev.mysql.com/downloads/windows/installer/8.0.html)  e definir login e senha no arquivo src\resources\db\conexao.php.
 - 4: Se o sistema não conseguir criar o banco e as tabelas executar o Script src\resources\db\banco_agendamento.sql, para criação da tabela que é utilizado para armazenar o agendamento
 - 3: Executar o script executarServidor.bat ele irá iniciar o servidor HTTP do php e abrir o navegador na página inicial.
@@ -17,7 +17,7 @@
  
 ### Executando em Servidor HTTP Comum:
 -  1: Instalar um servidor HTTP com suporte para o PHP 7.4 (tendo o php a extensão mysqli habilitada) Ex: Apache ou IIS.
--  2: Instalar o Google Chrome: https://www.google.pt/intl/pt-PT/chrome/
+-  2: Instalar o Google Chrome: https://www.google.pt/intl/pt-PT/chrome/ ou Microsoft Edge Atualizado na versão Chromium: https://www.microsoft.com/pt-br/edge (se for utilizar o edge dever ser alterado o arquivo executarServidor, removendo o comentario da linha responsavel por executar no edge e comentar a linha do chrome)
 -  3: Instalar o MySQL Server (https://dev.mysql.com/downloads/windows/installer/8.0.html) e definir login e senha no arquivo src\resources\db\conexao.php.
 -  4: Se o sistema não conseguir criar o banco e as tabelas executar o Script src\resources\db\banco_agendamento.sql, para criação da tabela que é utilizado para armazenar o agendamento
 -  4: Após instalado as dependências inicias disponibilizar a pasta src no seu servidor HTTP;

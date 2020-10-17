@@ -3,9 +3,12 @@ class ApiFeegow {
     apiUrl = 'https://api.feegow.com/v1/api/';
     header = {};
     token = null;
+    apiGatewayService = null;
 
     constructor(token) {
-        this.header = { "x-access-token": token}
+        this.header = {
+            "x-access-token": token,
+        };
         this.apiGatewayService = new ApiGatewayService();
     }
 
@@ -15,8 +18,8 @@ class ApiFeegow {
      * @param {json} data 
      */
     get(metodo = "", data = {}) {
-        var data = new URLSearchParams(data).toString()
-        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'GET', this.header)
+        var data = new URLSearchParams(data).toString();
+        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'GET', this.header);
     }
 
     /**
@@ -25,7 +28,7 @@ class ApiFeegow {
      * @param {json} data 
      */
     put(metodo = "", data = {}) {
-        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'PUT', this.header)
+        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'PUT', this.header);
     }
 
     /**
@@ -34,6 +37,6 @@ class ApiFeegow {
      * @param {json} data 
      */
     post(metodo = '', data = {}) {
-        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'POST', this.header)
+        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'POST', this.header);
     }
 }
