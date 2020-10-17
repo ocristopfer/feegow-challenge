@@ -41,7 +41,6 @@ function getListaEspecilidades() {
  *  
  * */
 function getAgendamentos(especialidade_id) {
-    if (especialidade_id != "") {
         loader(true);
         $('#listaAgendamento tbody').empty();
         apiGatewayService = new ApiGatewayService();
@@ -52,15 +51,13 @@ function getAgendamentos(especialidade_id) {
                     var row = "<tr><td>" + element.name + '</td><td>' + element.cpf + '</td><td>' + new Date(element.date_time).toLocaleString('pt-BR') + '</td></tr>';
                     $('#listaAgendamento tbody').append(row);
                 });
-                loader(false);
-                               
+               loader(false, 500);
+                                
             }, erro => {
                 $('#totalAgendamentos').text('0 agendamentos encontrados');
                 loader(false, 500);
             }
         )
-    }
-
 }
 
 

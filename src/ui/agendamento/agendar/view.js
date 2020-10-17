@@ -49,8 +49,11 @@ $("#salvarCadastro").click(function () {
     var form = $("#formCadastro")
     if (form[0].checkValidity()) {
         salvarAgendamento();
+        form.removeClass('was-validated');
+    } else {
+        form.addClass('was-validated');
     }
-    form.addClass('was-validated');
+
 })
 
 $('#modalAgendamento').on('hidden.bs.modal', function () {
@@ -61,6 +64,7 @@ $('#modalAgendamento').on('hidden.bs.modal', function () {
     $('#cpf').val('');
     $('#listaComoConheceu').val();
 })
+
 
 ///Funções
 
@@ -139,7 +143,7 @@ function carregarListaEspecialistas(lista, id_especilidade) {
         $(htmlCard).appendTo('#listaEspecialistas').fadeIn("slow");
         lista.shift();
         carregarListaEspecialistas(lista, id_especilidade)
-    }else{
+    } else {
         loader(false);
     }
 
@@ -177,31 +181,36 @@ function validarCPF(cpf) {
 }
 
 
+var agendando = false;
 /**
  * Função responsavel por salvado o agendamento do usuário no banco;
  */
 function salvarAgendamento() {
-    dtNascimento = $('#dtNascimento').val();
-    dtNascimento = dtNascimento.split('/');
-    dtNascimento = dtNascimento[2] + '-' + dtNascimento[1] + '-' + dtNascimento[0];
-    var dadosPost = {
-        specialty_id: id_especilidade,
-        professional_id: id_profissional,
-        name: $('#nome').val(),
-        cpf: $('#cpf').val(),
-        source_id: $('#listaComoConheceu').val(),
-        birthdate: new Date(dtNascimento).toISOString().slice(0, 19).replace('T', ' '),
-        date_time: new Date().toISOString().slice(0, 19).replace('T', ' '),
-    }
-    apiGatewayService = new ApiGatewayService();
-    apiGatewayService.apiRequest('ajax/salvar.agendamento.php', dadosPost).then(
-        sucesso => {
-            bootboxAlert("Dados salvos com sucesso!", function () { $('#modalAgendamento').modal('hide') });
-
-        }, erro => {
-            $('#cpf').val('');
+    if (agendando == false) {
+        agendando = true;
+        dtNascimento = $('#dtNascimento').val();
+        dtNascimento = dtNascimento.split('/');
+        dtNascimento = dtNascimento[2] + '-' + dtNascimento[1] + '-' + dtNascimento[0];
+        var dadosPost = {
+            specialty_id: id_especilidade,
+            professional_id: id_profissional,
+            name: $('#nome').val(),
+            cpf: $('#cpf').val(),
+            source_id: $('#listaComoConheceu').val(),
+            birthdate: new Date(dtNascimento).toISOString().slice(0, 19).replace('T', ' '),
+            date_time: new Date().toISOString().slice(0, 19).replace('T', ' '),
         }
-    )
+        apiGatewayService = new ApiGatewayService();
+        apiGatewayService.apiRequest('ajax/salvar.agendamento.php', dadosPost).then(
+            sucesso => {
+                bootboxAlert("Dados salvos com sucesso!", function () { $('#modalAgendamento').modal('hide'); agendando = false; });
+            }, erro => {
+                bootboxAlert("Erro ao salvar agendamento, verifique todos os dados e tente novamente!", function(){
+                    agendando = false;
+                });
+            }
+        )
+    }
 }
 
 function bootboxAlert(msg, callbackFunction) {
@@ -221,7 +230,7 @@ function loader(exibir = false, timeout = 0) {
     if (exibir) {
         $('#loader').modal('show');
     } else {
-        setTimeout(function(){  $('#loader').modal('hide'); }, timeout);    
+        setTimeout(function () { $('#loader').modal('hide'); }, timeout);
     }
 
 }

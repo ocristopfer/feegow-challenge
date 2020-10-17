@@ -7,17 +7,17 @@ include_once __DIR__ . '/../../../../resources/api/modulos/agendamento/agendamen
 
 $requestBody =  Api::getRequestBody();
 
-if (!isset($requestBody->especialidade_id)) {
-    Api::resposta_erro_Api_throw_errors(406);
-}
-
 $con = new Conexao();
 $conSql = $con->startCon();
 $agendamentoDb = new AgendamentoDB($conSql);
 
 try {
-
-    $listaAgendamentos = $agendamentoDb->listar_por_especilidade($requestBody->especialidade_id);
+    if(!isset($requestBody->especialidade_id) || $requestBody->especialidade_id == ""){
+        $listaAgendamentos = $agendamentoDb->listar();
+    }else{
+        $listaAgendamentos = $agendamentoDb->listar_por_especilidade($requestBody->especialidade_id);
+    }
+    
     if (count($listaAgendamentos) > 0) {
         Api::resposta_JSON_Api($listaAgendamentos);
     } else {

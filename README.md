@@ -25,7 +25,5 @@
 -  6: Acessar o endereço raiz do servidor web que foi disponibilizado, se for na porta 80 o comando informando anterior já irá abrir diretamente o seu servidor web Ex: 127.0.0.1/src
  
 ## Extra
-    Foi adicionado uma tela responsável por listar os agendamentos já salvos no banco de dados.
- 
-### A aplicação foi testada em ambiente windows usando o Servidor Web Embutido do PHP 7.4 e IIS(Internet Information Services)10 com CGI e PHP 7.4
-### a mesma também foi testado no firefox, porém devido ao bloqueio do cors não foi possível testar a comunicação com a Api feegow
+    - Foi adicionado uma tela responsável por listar os agendamentos já salvos no banco de dados.
+    - A aplicação foi testada em ambiente Windows sendo executado no Servidor Web Embutido do PHP 7.4 e IIS(Internet Information Services)10 com CGI e PHP 7.4  e usando o Google Chrome para carregar, a mesma também foi testado no firefox, porém devido ao bloqueio do cors não foi possível testar a comunicação com a Api feegow
