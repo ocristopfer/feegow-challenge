@@ -2,6 +2,10 @@
 include_once __DIR__ . '/../db/conexao.php';
 include_once __DIR__  . '/../api/utilidades/string/string.utf8.php';
 
+/**
+ * Mini framework de persietencia, que faz toda a comunicação entra a classe db e a respetitiva tabela no banco de dados.
+
+ */
 class DbPersistenceManager
 {
 

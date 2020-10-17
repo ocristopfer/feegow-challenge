@@ -1,5 +1,5 @@
 <?php
-$token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJwdWJsaWNhcGkiLCJpYXQiOiIxNy0wOC0yMDE4IiwibGljZW5zZUlEIjoiMTA1In0.UnUQPWYchqzASfDpVUVyQY0BBW50tSQQfVilVuvFG38'
+include_once __DIR__ . '/../../../resources/api/seguranca/token/token.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ $token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJw
 </head>
 
 <body>
-    <input type="hidden" id="token" value="<?php echo $token ?>">
+    <input type="hidden" id="token" value="<?php echo Token::getToken() ?>">
     <div class="container">
         <div id="loader" class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
             <div class="modal-dialog modal-sm">
