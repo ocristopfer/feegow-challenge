@@ -42,7 +42,7 @@ include_once __DIR__ . '/../../../resources/api/seguranca/token/token.php'
                         <h5><b>Agendamentos de</b></h5>
                     </div>
                     <select class="custom-select rounded m-1 " id="listaEspecilidades">
-                        <option selected value="">Selecione a especialidade</option>
+                        <option selected value="">Todos</option>
                     </select>
                     <div class="m-1">
                         <button class="btn btn-success  rounded-pill" id="buscarAgendamentos" type="button">Buscar</button>
@@ -58,6 +58,7 @@ include_once __DIR__ . '/../../../resources/api/seguranca/token/token.php'
                         <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">CPF</th>
+                            <th scope="col">Especialidade</th>
                             <th scope="col">Data</th>
                         </tr>
                     </thead>

@@ -1,0 +1,34 @@
+.container{
+    width: 100%;
+}
+
+.cardProfissional{
+    width: 18rem; 
+    display:block; 
+    height: 170px
+}
+
+.areaDescricaoProfissional{
+    height:80px;
+}
+
+.areaFotoProfissional{
+    float: left; 
+    height:145px;
+}
+.fotoProfissional{
+    width:80px;
+    height:70px;
+}
+
+.bd-example-modal-lg .modal-dialog{
+    display: table;
+    position: relative;
+    margin: 0 auto;
+    top: calc(50% - 24px);
+}
+
+.bd-example-modal-lg .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
+}
