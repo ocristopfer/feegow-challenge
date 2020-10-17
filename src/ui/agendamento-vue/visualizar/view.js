@@ -15,7 +15,7 @@ var app = new Vue({
             }
         },
         buscarAgendamentos() {
-            //this.loader(true);
+            this.loader(true);
             apiGatewayService = new ApiGatewayService();
             apiGatewayService.apiRequest('ajax/get.agendamentos.php', { "especialidade_id": this.especialidade_id }).then(
                 sucesso => {

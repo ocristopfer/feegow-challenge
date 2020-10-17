@@ -2,7 +2,7 @@
  
 ## Tecnologias Utilizadas
     Back End: PHP, MYSQL (Usando um database framework, criado especialmente para a atividade)
-    Front End: JQuery, Boostrap
+    Front End: JQuery, Boostrap, Vue.JS
  
  
 ## Modos de Execução da aplicação:
