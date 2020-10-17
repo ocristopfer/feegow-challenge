@@ -5,7 +5,9 @@
 ### Windows
 - 1: Instalar a depêdencia Visual C++ Redistributable for Visual Studio 2015-2019 x86 ", está no diretório do projeto: depedencias\VC_redist.x86.exe"
 - 2: Instalar o Google Chrome: https://www.google.pt/intl/pt-PT/chrome/
-- 3: Executar o scritp executarServidor.bat
+- 3: Instalar o MySQL Server e definir login e senha no arquivo src\resources\db\conexao.php.
+- 4: Executar o Scritp src\resources\db\banco_agendamento.sql, para criação da tabela que é utilizar para amazenar o agendamento
+- 3: Executar o scritp executarServidor.bat ele irá iniciar o servidor HTTP do php e abrir o navegador na pagina inicial.
 
 ## Executando em Servidor HTTP:
 -  1: Servidor HTTP com plugin para execução de script PHP 7.4 instalado Ex: Apache ou IIS.

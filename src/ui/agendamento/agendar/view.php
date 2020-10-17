@@ -8,9 +8,9 @@ $token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJw
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento de Consultas</title>
-    <link rel="icon" type="image/ico" href="./../../assets/favicon.png" />
-    <link rel="stylesheet" type="text/css" href="./../../plugins/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="./../../plugins/bootstrap/bootstrap-datepicker3.min.css" />
+    <link rel="icon" type="image/ico" href="./../../../assets/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="./../../../plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./../../../plugins/bootstrap/bootstrap-datepicker3.min.css" />
     <link rel="stylesheet" type="text/css" href="view.css" />
 </head>
 
@@ -28,6 +28,7 @@ $token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJw
                 </div>
             </div>
         </div>
+
 
         <div class="card mb-4 mt-4 box-shadow">
             <div class="card-header">
@@ -53,6 +54,9 @@ $token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJw
             <div id="listaEspecialistas" class="d-flex flex-wrap justify-content-center"></div>
         </div>
 
+        <div class="m-3">
+            <button class="btn btn-success rounded-pill" onclick="location.href='../'" type="button">Voltar</button>
+        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="modalAgendamento" tabindex="-1" role="dialog" aria-labelledby="modalAgendamentoTitle" aria-hidden="true">
@@ -106,20 +110,20 @@ $token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJw
     </div>
 
 
-    
-    <script type='text/javascript' src="./../../plugins/jquery/jquery-3.5.1.min.js"></script>  
-    <script type='text/javascript' src="./../../plugins/jquery/jquery.mask.min.js"></script>
 
-    <script type='text/javascript' src="./../../plugins/bootstrap/bootstrap.min.js"></script>
-    <script type='text/javascript' src="./../../plugins/bootbox/bootbox.min.js"></script>
-    <script type="text/javascript" src="./../../plugins/bootstrap/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="./../../plugins/bootstrap/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script type='text/javascript' src="./../../../plugins/jquery/jquery-3.5.1.min.js"></script>
+    <script type='text/javascript' src="./../../../plugins/jquery/jquery.mask.min.js"></script>
 
-    <script type='text/javascript' src="./../../resources/integracao/api.gateway.service.js"></script>
-    <script type='text/javascript' src="./../../resources/integracao/api.feegow/api.feegow.js"></script>
-    <script type='text/javascript' src="./../../resources/integracao/api.feegow/api.feegow.professional.js"></script>
-    <script type='text/javascript' src="./../../resources/integracao/api.feegow/api.feegow.specialties.js"></script>
-    <script type='text/javascript' src="./../../resources/integracao/api.feegow/api.feegow.patient.js"></script>
+    <script type='text/javascript' src="./../../../plugins/bootstrap/bootstrap.min.js"></script>
+    <script type='text/javascript' src="./../../../plugins/bootbox/bootbox.min.js"></script>
+    <script type="text/javascript" src="./../../../plugins/bootstrap/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="./../../../plugins/bootstrap/bootstrap-datepicker.pt-BR.min.js"></script>
+
+    <script type='text/javascript' src="./../../../resources/integracao/api.gateway.service.js"></script>
+    <script type='text/javascript' src="./../../../resources/integracao/api.feegow/api.feegow.js"></script>
+    <script type='text/javascript' src="./../../../resources/integracao/api.feegow/api.feegow.professional.js"></script>
+    <script type='text/javascript' src="./../../../resources/integracao/api.feegow/api.feegow.specialties.js"></script>
+    <script type='text/javascript' src="./../../../resources/integracao/api.feegow/api.feegow.patient.js"></script>
 
 
     <script type='text/javascript' src="view.js"></script>

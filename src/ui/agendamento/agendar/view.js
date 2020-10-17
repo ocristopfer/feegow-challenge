@@ -124,7 +124,7 @@ function carregarListaEspecialistas(lista, id_especilidade) {
         var htmlCard = '<div class="card shadow rounded-lg m-2 " style="width: 18rem; display:none; height: 170px">' +
             '                        <div class="card-body">' +
             '                            <div style="float: left; height:145px"> ' +
-            '                               <img src="' + (lista[0].foto != null ? lista[0].foto : './../../assets/professional.jpg') + '" class="rounded-circle float-left mr-2" style="width:80px;height:70px;">' +
+            '                               <img src="' + (lista[0].foto != null ? lista[0].foto : './../../../assets/professional.jpg') + '" class="rounded-circle float-left mr-2" style="width:80px;height:70px;">' +
             '                            </div> ' +
             '                            <div style="height:80px">' +
             '                               <h6 class="card-title">' + lista[0].nome + '</h6>' +

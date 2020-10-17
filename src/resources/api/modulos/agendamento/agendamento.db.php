@@ -61,4 +61,17 @@ class AgendamentoDB
         $query = "SELECT * FROM " . self::getTableName();
         return DbPersistenceManager::listar($this->con, $query, AgendamentoModel::class);
     }
+
+    /**
+     * Função responsável por listar todos os agendamentos
+     *
+     * @return void
+     */
+    public function listar_por_especilidade($id_especilidade)
+    {
+        $arrayValores = array();
+        $arrayValores[] = $id_especilidade;
+        $query = "SELECT * FROM " . self::getTableName() . ' WHERE specialty_id = ?';
+        return DbPersistenceManager::listar($this->con, $query, AgendamentoModel::class, $arrayValores);
+    }
 }

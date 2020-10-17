@@ -1,0 +1,85 @@
+<?php
+$token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJwdWJsaWNhcGkiLCJpYXQiOiIxNy0wOC0yMDE4IiwibGljZW5zZUlEIjoiMTA1In0.UnUQPWYchqzASfDpVUVyQY0BBW50tSQQfVilVuvFG38'
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Agendamentos</title>
+    <link rel="icon" type="image/ico" href="./../../../assets/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="./../../../plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./../../../plugins/bootstrap/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="view.css" />
+</head>
+
+<body>
+    <input type="hidden" id="token" value="<?php echo $token ?>">
+    <div class="container">
+        <div id="loader" class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content" style="width: 48px">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card mb-4 mt-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Agendamentos
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="input-group">
+                    <div class="m-2">
+                        <h5><b>Agendamentos de</b></h5>
+                    </div>
+                    <select class="custom-select rounded m-1 " id="listaEspecilidades">
+                        <option selected value="">Selecione a especialidade</option>
+                    </select>
+                    <div class="m-1">
+                        <button class="btn btn-success  rounded-pill" id="buscarAgendamentos" type="button">Buscar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="listaAgendamento" class="d-flex flex-wrap justify-content-center m-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <button class="btn btn-success rounded-pill" onclick="location.href='../'" type="button">Voltar</button>
+        </div>
+
+    </div>
+
+    <script type='text/javascript' src="./../../../plugins/jquery/jquery-3.5.1.min.js"></script>
+    <script type='text/javascript' src="./../../../plugins/bootstrap/bootstrap.min.js"></script>
+    <script type='text/javascript' src="./../../../plugins/bootbox/bootbox.min.js"></script>
+    <script type='text/javascript' src="./../../../resources/integracao/api.gateway.service.js"></script>
+    <script type='text/javascript' src="./../../../resources/integracao/api.feegow/api.feegow.js"></script>
+    <script type='text/javascript' src="./../../../resources/integracao/api.feegow/api.feegow.specialties.js"></script>
+    <script type='text/javascript' src="view.js"></script>
+
+
+</body>
+
+</html>

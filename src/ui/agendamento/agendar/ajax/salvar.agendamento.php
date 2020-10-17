@@ -1,8 +1,8 @@
 <?php
-include_once __DIR__ . '/../../../resources/api/api.php';
-include_once __DIR__ . '/../../../resources/db/conexao.php';
-include_once __DIR__ . '/../../../resources/api/dependencias/jsonmapper/JsonMapper.php';
-include_once __DIR__ . '/../../../resources/api/modulos/agendamento/agendamento.db.php';
+include_once __DIR__ . '/../../../../resources/api/api.php';
+include_once __DIR__ . '/../../../../resources/db/conexao.php';
+include_once __DIR__ . '/../../../../resources/api/dependencias/jsonmapper/JsonMapper.php';
+include_once __DIR__ . '/../../../../resources/api/modulos/agendamento/agendamento.db.php';
 
 
 $requestBody =  Api::getRequestBody();
@@ -26,8 +26,8 @@ try {
     if ($agendamentoDb->salvar($requestBodyMap)) {
         Api::resposta_JSON_Api(true);
     } else {
-        Api::resposta_erro_Api_throw_errors(406);
+        Api::resposta_erro_Api_throw_errors(400);
     }
-} catch (\Throwable $th) {
-    //throw $th;
+} catch (Exception $ex) {
+    Api::resposta_erro_Api_throw_errors(400);
 }

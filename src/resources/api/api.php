@@ -38,7 +38,8 @@ class Api{
     static public function resposta_erro_Api_throw_errors(int $status_code = 400){
 
         header('Content-Type: application/json');
-        http_response_code($status_code);        
+        http_response_code($status_code); 
+        exit;       
     }
 
 }
