@@ -1,16 +1,17 @@
-<?php 
-class Api{
+<?php
+class Api
+{
 
     /**
      * Retorna o body em JSON da requisição
      */
-    static public function getRequestBody(){
+    static public function getRequestBody()
+    {
         $str_request_body = file_get_contents("php://input");
-
         $json_request_body = json_decode("{}");
-        if(isset($str_request_body)){
+        if (isset($str_request_body)) {
             $json_request_body = json_decode($str_request_body);
-            if(!isset($json_request_body)){
+            if (!isset($json_request_body)) {
                 $json_request_body = json_decode("{}");
             }
         }
@@ -18,28 +19,29 @@ class Api{
         return $json_request_body;
     }
 
-
-    /** 
+    /**
      * Usado para responder um objeto como JSON
-     * 
-     * @$resposta Esse argumento será transformado em JSON
+     *
+     * @param [type] $resposta
+     * Esse argumento será transformado em JSON
+     * @return void
      */
-    static public function resposta_JSON_Api($resposta){
+    static public function resposta_JSON_Api($resposta)
+    {
         header('Content-Type: application/json');
         echo json_encode($resposta);
     }
 
     /**
-     * Undocumented function
+     * Usado para responder erros no Header da requisição
      *
      * @param integer $status_code
      * @return void
      */
-    static public function resposta_erro_Api_throw_errors(int $status_code = 400){
-
+    static public function resposta_erro_Api_throw_errors(int $status_code = 400)
+    {
         header('Content-Type: application/json');
-        http_response_code($status_code); 
-        exit;       
+        http_response_code($status_code);
+        exit;
     }
-
 }

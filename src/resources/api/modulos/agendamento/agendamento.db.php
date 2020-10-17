@@ -34,7 +34,8 @@ class AgendamentoDB
      */
     public function salvar(AgendamentoModel $objModel)
     {
-        return DbPersistenceManager::salvar($this->con, $objModel, self::getTableName(), self::getNomeChavePrimaria());
+        $records_affected = 0;
+        return DbPersistenceManager::salvar($this->con, $objModel, self::getTableName(), self::getNomeChavePrimaria(), $records_affected, $this->getQueryCriarTabela());
     }
 
     /**
@@ -48,7 +49,7 @@ class AgendamentoDB
         $arrayValores = array();
         $query = "select * from " . self::getTableName() . " where " . self::getNomeChavePrimaria() . " = ? ";
         $arrayValores[] = $id;
-        return DbPersistenceManager::listar($this->con, $query, AgendamentoModel::class, $arrayValores);
+        return DbPersistenceManager::listar($this->con, $query, AgendamentoModel::class, $arrayValores, $this->getQueryCriarTabela());
     }
 
     /**
@@ -59,7 +60,7 @@ class AgendamentoDB
     public function listar()
     {
         $query = "SELECT * FROM " . self::getTableName();
-        return DbPersistenceManager::listar($this->con, $query, AgendamentoModel::class);
+        return DbPersistenceManager::listar($this->con, $query, AgendamentoModel::class, null, $this->getQueryCriarTabela());
     }
 
     /**
@@ -72,6 +73,23 @@ class AgendamentoDB
         $arrayValores = array();
         $arrayValores[] = $id_especilidade;
         $query = "SELECT * FROM " . self::getTableName() . ' WHERE specialty_id = ?';
-        return DbPersistenceManager::listar($this->con, $query, AgendamentoModel::class, $arrayValores);
+        return DbPersistenceManager::listar($this->con, $query, AgendamentoModel::class, $arrayValores, $this->getQueryCriarTabela());
+    }
+
+    private function getQueryCriarTabela()
+    {
+        $query = 'CREATE TABLE IF NOT EXISTS `agendamento` (
+          `id` int NOT NULL AUTO_INCREMENT,
+          `specialty_id` int DEFAULT NULL,
+          `professional_id` int DEFAULT NULL,
+          `name` varchar(150) DEFAULT NULL,
+          `cpf` varchar(15) DEFAULT NULL,
+          `source_id` int DEFAULT NULL,
+          `birthdate` date DEFAULT NULL,
+          `date_time` datetime DEFAULT NULL,
+          PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;';
+
+        return $query;
     }
 }
