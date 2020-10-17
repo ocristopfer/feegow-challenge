@@ -5,7 +5,7 @@ var id_profissional = null;
 $(document).ready(function () {
     getListaEspecilidades();
     getListaComoConheceu();
-    
+
     $('#dtNascimento').datepicker({
         format: 'dd/mm/yyyy',
         language: "pt-BR",
@@ -25,13 +25,14 @@ $('#buscarEspecilistas').click(function () {
     id_especilidade = $('#listaEspecilidades').val();
 
     if (id_especilidade != '') {
-
+        loader(true);
         $('#listaEspecialistas').empty();
         getListaProssifionais(id_especilidade).then(
             success => {
                 $('#totalEspecialistas').text(success.length + ' ' + $('#listaEspecilidades option:selected').html() + ' encontrado(s)');
                 carregarListaEspecialistas(success, id_especilidade);
             }, erro => {
+                loader(false);
                 return
             }
         )
@@ -49,6 +50,15 @@ $("#salvarCadastro").click(function () {
         salvarAgendamento();
     }
     form.addClass('was-validated');
+})
+
+$('#modalAgendamento').on('hidden.bs.modal', function () {
+    id_especilidade = null;
+    id_profissional = null;
+    $('#dtNascimento').val('');
+    $('#nome').val('');
+    $('#cpf').val('');
+    $('#listaComoConheceu').val();
 })
 
 ///Funções
@@ -128,6 +138,8 @@ function carregarListaEspecialistas(lista, id_especilidade) {
         $(htmlCard).appendTo('#listaEspecialistas').fadeIn("slow");
         lista.shift();
         carregarListaEspecialistas(lista, id_especilidade)
+    }else{
+        loader(false);
     }
 
 }
@@ -196,11 +208,19 @@ function bootboxAlert(msg, callbackFunction) {
         message: msg,
         centerVertical: true,
         callback: function (result) {
-            if(callbackFunction){
+            if (callbackFunction) {
                 callbackFunction();
             }
-            
+
         }
     });
 }
 
+function loader(exibir = false) {
+    if (exibir) {
+        $('#loader').modal('show');
+    } else {
+        $('#loader').modal('hide');
+    }
+
+}
