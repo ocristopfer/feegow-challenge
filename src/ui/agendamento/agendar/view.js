@@ -32,7 +32,8 @@ $('#buscarEspecilistas').click(function () {
                 $('#totalEspecialistas').text(success.length + ' ' + $('#listaEspecilidades option:selected').html() + ' encontrado(s)');
                 carregarListaEspecialistas(success, id_especilidade);
             }, erro => {
-                loader(false);
+                $('#totalEspecialistas').text('0 ' + $('#listaEspecilidades option:selected').html() + ' encontrado(s)');
+                loader(false, 500);
                 return
             }
         )
@@ -216,11 +217,11 @@ function bootboxAlert(msg, callbackFunction) {
     });
 }
 
-function loader(exibir = false) {
+function loader(exibir = false, timeout = 0) {
     if (exibir) {
         $('#loader').modal('show');
     } else {
-        $('#loader').modal('hide');
+        setTimeout(function(){  $('#loader').modal('hide'); }, timeout);    
     }
 
 }

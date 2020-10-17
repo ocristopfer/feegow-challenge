@@ -47,14 +47,16 @@ function getAgendamentos(especialidade_id) {
         apiGatewayService = new ApiGatewayService();
         apiGatewayService.apiRequest('ajax/get.agendamentos.php', { "especialidade_id": especialidade_id }).then(
             sucesso => {
+                $('#totalAgendamentos').text(sucesso.length + ' agendamentos encontrados');
                 sucesso.forEach(element => {
                     var row = "<tr><td>" + element.name + '</td><td>' + element.cpf + '</td><td>' + new Date(element.date_time).toLocaleString('pt-BR') + '</td></tr>';
                     $('#listaAgendamento tbody').append(row);
                 });
-                setTimeout(function(){  loader(false); }, 1000);
+                loader(false);
                                
             }, erro => {
-                loader(false);
+                $('#totalAgendamentos').text('0 agendamentos encontrados');
+                loader(false, 500);
             }
         )
     }
@@ -76,11 +78,11 @@ function bootboxAlert(msg, callbackFunction) {
     });
 }
 
-function loader(exibir = false) {
+function loader(exibir = false, timeout = 0) {
     if (exibir) {
         $('#loader').modal('show');
     } else {
-        $('#loader').modal('hide');
+        setTimeout(function(){  $('#loader').modal('hide'); }, timeout);       
     }
 
 }

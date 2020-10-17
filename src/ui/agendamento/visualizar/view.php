@@ -49,7 +49,9 @@ $token = ' eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmZWVnb3ciLCJhdWQiOiJw
                     </div>
                 </div>
             </div>
-
+            <div class="ml-3">
+                <p class="h5" id="totalAgendamentos"></p>
+            </div>
             <div id="listaAgendamento" class="d-flex flex-wrap justify-content-center m-2">
                 <table class="table">
                     <thead>
