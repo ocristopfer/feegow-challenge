@@ -21,7 +21,7 @@ class ApiFeegow {
         if(data){
             data = new URLSearchParams(data).toString();
         }
-        this.header.RequestType = 'GET';
+        this.header.Requesttype = 'GET';
         this.header.Metodo = metodo;
         return this.apiGatewayService.apiRequest(this.apiUrl, data, 'GET', this.header);
     }
@@ -32,7 +32,7 @@ class ApiFeegow {
      * @param {json} data 
      */
     put(metodo = "", data = {}) {
-        this.header.RequestType = 'PUT';
+        this.header.Requesttype = 'PUT';
         this.header.Metodo = metodo;
         return this.apiGatewayService.apiRequest(this.apiUrl, data, 'PUT', this.header);
     }
@@ -43,7 +43,7 @@ class ApiFeegow {
      * @param {json} data 
      */
     post(metodo = '', data = {}) {
-        this.header.RequestType = 'POST';
+        this.header.Requesttype = 'POST';
         this.header.Metodo = metodo;
         return this.apiGatewayService.apiRequest(this.apiUrl, data, 'POST', this.header);
     }

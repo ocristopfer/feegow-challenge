@@ -12,7 +12,7 @@ try {
     $metodo = $headers['Metodo'];
     $arrayCurl = array();
 
-    if ($headers['RequestType'] == 'GET') {
+    if ($headers['Requesttype'] == 'GET') {
         if (count($_GET) > 0) {
             $metodo .= '?' . http_build_query($_GET);
         }
