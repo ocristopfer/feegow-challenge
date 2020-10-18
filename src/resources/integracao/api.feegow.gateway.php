@@ -18,6 +18,7 @@ class ApiFeegowGatewayService
     {
         try {
             $header = array('Content-Type: application/json', 'Accept: application/json');
+            
             if ($this->token) {
                 $header[] = "x-access-token: " . $this->token;
             }

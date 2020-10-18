@@ -5,7 +5,7 @@ class ApiFeegow {
     apiGatewayService = null;
 
     constructor() {
-        var url = decodeURIComponent(this.getCokie('url'));
+        var url = decodeURIComponent(this.getCokie('urlRaiz'));
         if(url != ''){
             this.apiUrl = url + '/resources/integracao/api.feegow.php';
         } 
@@ -31,10 +31,10 @@ class ApiFeegow {
      * @param {string} metodo 
      * @param {json} data 
      */
-    put(metodo = "", data = {}) {
-        this.header.Requesttype = 'PUT';
+    post(metodo = '', data = {}) {
+        this.header.Requesttype = 'POST';
         this.header.Metodo = metodo;
-        return this.apiGatewayService.apiRequest(this.apiUrl, data, 'PUT', this.header);
+        return this.apiGatewayService.apiRequest(this.apiUrl, data, 'POST', this.header);
     }
 
     /**
@@ -42,11 +42,12 @@ class ApiFeegow {
      * @param {string} metodo 
      * @param {json} data 
      */
-    post(metodo = '', data = {}) {
-        this.header.Requesttype = 'POST';
+    put(metodo = "", data = {}) {
+        this.header.Requesttype = 'PUT';
         this.header.Metodo = metodo;
-        return this.apiGatewayService.apiRequest(this.apiUrl, data, 'POST', this.header);
+        return this.apiGatewayService.apiRequest(this.apiUrl, data, 'PUT', this.header);
     }
+
 
     getCokie(cname) {
         var name = cname + "=";

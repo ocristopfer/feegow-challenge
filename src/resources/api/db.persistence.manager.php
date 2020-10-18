@@ -84,8 +84,8 @@ class DbPersistenceManager
                             $objModel->{$nomeChavePrimaria} = $statement->insert_id;
                         }
                     }
+                    $statement->close();
                 }
-                $statement->close();
             }
 
             if ($con->errno == 1146) {

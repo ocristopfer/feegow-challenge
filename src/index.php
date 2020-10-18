@@ -1,7 +1,6 @@
 <?php
-include_once __DIR__ . '/resources/integracao/api.url.php';
-ApiUrl::setUrl('http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']))
-
+$arquivoInicial = true;
+include_once __DIR__ . '/sessao.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +19,7 @@ ApiUrl::setUrl('http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF'])
     <div class="container mt-5">
         <h1>Feegow Challenge</h1>
         <p>A tarefa foi construida em duas soluções, um sendo apenas JQuery e outra em Vue.JS</p>
-   
+
         <button type="button" onclick="location.href = 'ui/agendamento/'" class="btn btn-primary btn-lg m-2">Solução em JQuery</button>
         <button type="button" onclick="location.href = 'ui/agendamento-vue/'" class="btn btn-secondary btn-lg m-2">Solução em Vue.JS</button>
     </div>

@@ -12,13 +12,14 @@ try {
     $metodo = $headers['Metodo'];
     $arrayCurl = array();
 
+    
     if ($headers['Requesttype'] == 'GET') {
         if (count($_GET) > 0) {
             $metodo .= '?' . http_build_query($_GET);
         }
     } else {
         $arrayCurl = array(
-            CURLOPT_POST => true,
+            CURLOPT_CUSTOMREQUEST => $headers['Requesttype'],
             CURLOPT_POSTFIELDS => json_encode(API::getRequestBody())
         );
     }
