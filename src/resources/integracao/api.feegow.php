@@ -2,7 +2,7 @@
 header("Content-Type: application/json");
 /**
  * A ideia original foi usar requisições via javascritp para a api feegow, porem devido a problema de cors foi criado esse gateway, 
- * que funciona como uma ponte entre toda a estrura criada em js como a api feegow;
+ * que funciona como uma ponte entre toda a estrura criada em js com a api feegow;
  */
 include_once __DIR__ . '/../api/api.php';
 include_once __DIR__ . '/api.feegow.gateway.php';
@@ -12,7 +12,7 @@ try {
     $metodo = $headers['Metodo'];
     $arrayCurl = array();
 
-    if ($headers['Requesttype'] == 'GET') {
+    if ($headers['RequestType'] == 'GET') {
         if (count($_GET) > 0) {
             $metodo .= '?' . http_build_query($_GET);
         }

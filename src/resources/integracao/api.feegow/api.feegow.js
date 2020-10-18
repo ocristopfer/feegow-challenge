@@ -18,7 +18,9 @@ class ApiFeegow {
      * @param {json} data 
      */
     get(metodo = "", data = {}) {
-        data = new URLSearchParams(data).toString();
+        if(data){
+            data = new URLSearchParams(data).toString();
+        }
         this.header.RequestType = 'GET';
         this.header.Metodo = metodo;
         return this.apiGatewayService.apiRequest(this.apiUrl, data, 'GET', this.header);
