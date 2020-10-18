@@ -53,14 +53,16 @@ var app = new Vue({
 
     },
     mounted() {
-
+        this.loader(true);
         //Carrega as especialidades
         apiFeegowSpecialties = new ApiFeegowSpecialties(this.token);
         apiFeegowSpecialties.list().then(
             sucesso => {
                 this.listaEspecialidades = sucesso.content
+                this.loader(false);
             }, erro => {
-                console.log('erro')
+                console.log('erro');
+                this.loader(false);
             }
         )
 

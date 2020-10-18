@@ -1,4 +1,3 @@
-var token = $('#token').val();
 var id_especilidade = null;
 var id_profissional = null;
 
@@ -72,13 +71,16 @@ $('#modalAgendamento').on('hidden.bs.modal', function () {
  * Função que retorna a lista de especilidades da api
  */
 function getListaEspecilidades() {
-    apiFeegowSpecialties = new ApiFeegowSpecialties(token);
+    loader(true);
+    apiFeegowSpecialties = new ApiFeegowSpecialties();
     apiFeegowSpecialties.list().then(
         sucesso => {
+            loader(false);
             sucesso.content.forEach(element => {
                 $("#listaEspecilidades").append("<option value='" + element.especialidade_id + "'>" + element.nome + "</option>");
             });
         }, erro => {
+            loader(false);
             console.log('erro')
         }
     )
@@ -89,7 +91,7 @@ function getListaEspecilidades() {
  * Função que retorna a lista de locais que o usuario posso ter vindo a conhecer a clinica
  */
 function getListaComoConheceu() {
-    apiFeegowPatient = new ApiFeegowPatient(this.token);
+    apiFeegowPatient = new ApiFeegowPatient();
     apiFeegowPatient.listSources().then(
         sucesso => {
             sucesso.content.forEach(element => {
@@ -107,7 +109,7 @@ function getListaComoConheceu() {
  */
 function getListaProssifionais(id_especilidade) {
     return new Promise((resolve, reject) => {
-        apiFeegowProfessional = new ApiFeegowProfessional(token);
+        apiFeegowProfessional = new ApiFeegowProfessional();
         apiFeegowProfessional.list(true, null, id_especilidade).then(
             sucesso => {
                 resolve(sucesso.content);
@@ -198,7 +200,7 @@ function salvarAgendamento() {
             cpf: $('#cpf').val(),
             source_id: $('#listaComoConheceu').val(),
             birthdate: new Date(dtNascimento).toISOString().slice(0, 19).replace('T', ' '),
-            date_time: new Date().toISOString().slice(0, 19).replace('T', ' '),
+            
         }
         apiGatewayService = new ApiGatewayService();
         apiGatewayService.apiRequest('ajax/salvar.agendamento.php', dadosPost).then(

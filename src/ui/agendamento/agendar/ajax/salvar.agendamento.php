@@ -12,11 +12,15 @@ $requestBodyMap = $jmapper->map($requestBody, new AgendamentoModel());
 
 $requestBodyMap = AgendamentoModel::parse($requestBodyMap);
 
+$requestBodyMap->date_time = date('Y-m-d H:i:s');
+
 foreach ($requestBodyMap as $key => $value) {
     if ($key != 'id' && $value == null) {
         Api::resposta_erro_Api_throw_errors(406);
     }
 }
+
+
 
 $con = new Conexao();
 $conSql = $con->startCon();

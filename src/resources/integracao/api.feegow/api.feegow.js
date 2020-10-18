@@ -1,14 +1,14 @@
 class ApiFeegow {
 
-    apiUrl = 'https://api.feegow.com/v1/api/';
+    apiUrl = location.origin + '/resources/integracao/api.feegow.php';
     header = {};
-    token = null;
     apiGatewayService = null;
 
-    constructor(token) {
-        this.header = {
-            "x-access-token": token,
-        };
+    constructor() {
+        var url = decodeURIComponent(this.getCokie('url'));
+        if(url != ''){
+            this.apiUrl = url + '/resources/integracao/api.feegow.php';
+        } 
         this.apiGatewayService = new ApiGatewayService();
     }
 
@@ -18,8 +18,10 @@ class ApiFeegow {
      * @param {json} data 
      */
     get(metodo = "", data = {}) {
-        var data = new URLSearchParams(data).toString();
-        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'GET', this.header);
+        data = new URLSearchParams(data).toString();
+        this.header.RequestType = 'GET';
+        this.header.Metodo = metodo;
+        return this.apiGatewayService.apiRequest(this.apiUrl, data, 'GET', this.header);
     }
 
     /**
@@ -28,7 +30,9 @@ class ApiFeegow {
      * @param {json} data 
      */
     put(metodo = "", data = {}) {
-        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'PUT', this.header);
+        this.header.RequestType = 'PUT';
+        this.header.Metodo = metodo;
+        return this.apiGatewayService.apiRequest(this.apiUrl, data, 'PUT', this.header);
     }
 
     /**
@@ -37,6 +41,23 @@ class ApiFeegow {
      * @param {json} data 
      */
     post(metodo = '', data = {}) {
-        return this.apiGatewayService.apiRequest(this.apiUrl + metodo, data, 'POST', this.header);
+        this.header.RequestType = 'POST';
+        this.header.Metodo = metodo;
+        return this.apiGatewayService.apiRequest(this.apiUrl, data, 'POST', this.header);
+    }
+
+    getCokie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
     }
 }

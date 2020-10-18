@@ -1,5 +1,3 @@
-var token = $('#token').val();
-
 $(document).ready(function () {
     getListaEspecilidades();
 });
@@ -23,13 +21,16 @@ $('#buscarAgendamentos').click(function () {
  * Função que retorna a lista de especilidades da api
  */
 function getListaEspecilidades() {
-    apiFeegowSpecialties = new ApiFeegowSpecialties(token);
+    loader(true);
+    apiFeegowSpecialties = new ApiFeegowSpecialties();
     apiFeegowSpecialties.list().then(
         sucesso => {
+            loader(false);
             sucesso.content.forEach(element => {
                 $("#listaEspecilidades").append("<option value='" + element.especialidade_id + "'>" + element.nome + "</option>");
             });
         }, erro => {
+            loader(false);
             console.log('erro')
         }
     )

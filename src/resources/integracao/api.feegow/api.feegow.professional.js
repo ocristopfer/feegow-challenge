@@ -2,8 +2,8 @@ class ApiFeegowProfessional {
 
     apiFeegow = null;
     
-    constructor(token){
-         this.apiFeegow = new ApiFeegow(token);    
+    constructor(){
+         this.apiFeegow = new ApiFeegow();    
     }
 
     /**

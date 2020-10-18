@@ -1,3 +1,9 @@
+<?php
+include_once __DIR__ . '/resources/integracao/api.url.php';
+ApiUrl::setUrl('http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']))
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

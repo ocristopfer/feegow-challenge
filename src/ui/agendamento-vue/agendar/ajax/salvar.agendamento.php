@@ -10,6 +10,8 @@ $requestBody =  Api::getRequestBody();
 $jmapper = new JsonMapper();
 $requestBodyMap = $jmapper->map($requestBody, new AgendamentoModel());
 
+$requestBodyMap->date_time = date('Y-m-d H:i:s');
+
 $requestBodyMap = AgendamentoModel::parse($requestBodyMap);
 
 foreach ($requestBodyMap as $key => $value) {

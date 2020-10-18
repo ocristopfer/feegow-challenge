@@ -19,7 +19,6 @@ var app = new Vue({
             date_time: ''
         },
         agendando: false,
-        token: $('#token').val(),
     },
     methods: {
         limparListaProfisionais() {
@@ -32,7 +31,7 @@ var app = new Vue({
             if (this.especialidade_id != '') {
                 this.loader(true);
                 this.listaProfissionais = {};
-                apiFeegowProfessional = new ApiFeegowProfessional(this.token);
+                apiFeegowProfessional = new ApiFeegowProfessional();
                 apiFeegowProfessional.list(true, null, this.especialidade_id).then(
                     sucesso => {
                         this.listaProfissionais = sucesso.content;
@@ -50,13 +49,12 @@ var app = new Vue({
         },
         salvarAgendamento() {
             var form = $("#formCadastro")
-            if (form[0].checkValidity() && agendando == false) {
-                agendando = true;
+            if (form[0].checkValidity() && this.agendando == false) {
+                this.agendando = true;
                 var birthdate = this.agendamento.birthdate;
                 this.agendamento.birthdate = this.agendamento.birthdate.split('/');
                 this.agendamento.birthdate = this.agendamento.birthdate[2] + '-' + this.agendamento.birthdate[1] + '-' + this.agendamento.birthdate[0];
                 this.agendamento.birthdate = new Date(this.agendamento.birthdate).toISOString().slice(0, 19).replace('T', ' '),
-                    this.agendamento.date_time = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
                 apiGatewayService = new ApiGatewayService();
                 apiGatewayService.apiRequest('ajax/salvar.agendamento.php', this.agendamento).then(
@@ -128,17 +126,19 @@ var app = new Vue({
         },
     },
     mounted() {
-
+        this.loader(true);
         //Carrega as especialidades
-        apiFeegowSpecialties = new ApiFeegowSpecialties(this.token);
+        apiFeegowSpecialties = new ApiFeegowSpecialties();
         apiFeegowSpecialties.list().then(
             sucesso => {
                 this.listaEspecialidades = sucesso.content
+                this.loader(false);
             }, erro => {
+                this.loader(false);
                 console.log('erro')
             }
         )
-        apiFeegowPatient = new ApiFeegowPatient(this.token);
+        apiFeegowPatient = new ApiFeegowPatient();
         apiFeegowPatient.listSources().then(
             sucesso => {
                 this.listaComoConheceu = sucesso.content;

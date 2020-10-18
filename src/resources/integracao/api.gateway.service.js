@@ -20,13 +20,14 @@ class ApiGatewayService {
                 data: data,
                 headers: headers,
                 success: function (data) {
-                    resolve(data);
+                    resolve(data);   
                 },
                 error: function (data) {
                     reject(data);
                 }
             });
         });
-    }
+    };
+
 }
 
